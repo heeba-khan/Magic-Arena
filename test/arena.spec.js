@@ -21,7 +21,11 @@ describe('Arena Class', () => {
         expect(roll).toBeLessThanOrEqual(6);
     });
 
-    
+    it('should validate player attributes within the allowed range', () => {
+        expect(() => new Player('Hero', -10, 20, 30)).toThrow('Health must be between 0 and 1000');
+        expect(() => new Player('Hero', 100, -5, 30)).toThrow('Attack power must be between 0 and 100');
+        expect(() => new Player('Hero', 100, 20, 150)).toThrow('Defense must be between 0 and 100');
+    });
 
     it('should let Hero1 win the fight', () => {
         const rollDiceMock = jest.spyOn(Arena, 'rollDice');
