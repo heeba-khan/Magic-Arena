@@ -21,10 +21,33 @@ describe('Arena Class', () => {
         expect(roll).toBeLessThanOrEqual(6);
     });
 
+    it('should not allow negative health', () => {
+        player1.takeDamage(150);
+        expect(player1.health).toBe(0);
+    });
+
+    it('should handle zero attack', () => {
+        player1.attack = 0;
+        const winner = Arena.fight(player1, player2);
+        expect(player2.health).toBeGreaterThan(0);
+    });
+
+    it('should handle maximum number of iterations', () => {
+        const rollDiceMock = jest.spyOn(Arena, 'rollDice');
+        rollDiceMock.mockReturnValue(1);
+        player1.attack = 1;
+        player2.strength = 1;
+        player2.attack = 1;
+        player1.strength = 1;
+
+        const winner = Arena.fight(player1, player2);
+        expect(winner).toBeNull(); // Indicating a draw
+    });
+
     it('should validate player attributes within the allowed range', () => {
         expect(() => new Player('Hero', -10, 20, 30)).toThrow('Health must be between 0 and 1000');
-        expect(() => new Player('Hero', 100, -5, 30)).toThrow('Attack power must be between 0 and 100');
-        expect(() => new Player('Hero', 100, 20, 150)).toThrow('Defense must be between 0 and 100');
+        expect(() => new Player('Hero', 100, -5, 30)).toThrow('Attack must be between 0 and 100');
+        expect(() => new Player('Hero', 100, 20, 150)).toThrow('Strength must be between 0 and 100');
     });
 
     it('should let Hero1 win the fight', () => {

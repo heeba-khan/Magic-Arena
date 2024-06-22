@@ -5,14 +5,14 @@ describe('Player Class', () => {
     let player;
 
     beforeEach(() => {
-        player = new Player('Hero1', 100, 50, 20);
+        player = new Player('Hero1', 100, 20, 50);
     });
 
     test('should create a player with the given properties', () => {
         expect(player.name).toBe('Hero1');
         expect(player.health).toBe(100);
-        expect(player.strength).toBe(50);
         expect(player.attack).toBe(20);
+        expect(player.strength).toBe(50);
     });
 
     test('should return true if the player is alive', () => {
