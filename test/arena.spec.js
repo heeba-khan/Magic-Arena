@@ -21,6 +21,8 @@ describe('Arena Class', () => {
         expect(roll).toBeLessThanOrEqual(6);
     });
 
+    
+
     it('should let Hero1 win the fight', () => {
         const rollDiceMock = jest.spyOn(Arena, 'rollDice');
         rollDiceMock.mockReturnValueOnce(6);  // Hero1's attack
