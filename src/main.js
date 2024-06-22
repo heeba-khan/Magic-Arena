@@ -1,9 +1,10 @@
 
-const Player=require('./models/player')
-const Arena=require('./models/arena')
-
-
-const readline = require('readline');
+// const Player=require('./models/player')
+// const Arena=require('./models/arena')
+import Player from './models/player.js'
+import Arena from './models/arena.js'
+// const readline = require('readline');
+import readline from 'readline'
 
 
 const rl = readline.createInterface({

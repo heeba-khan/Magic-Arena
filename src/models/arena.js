@@ -1,4 +1,4 @@
-const Player=require('./player')
+// const Player=require('./player')
 
 class Arena{
     static rollDice(){
@@ -30,4 +30,5 @@ class Arena{
 }
 
 
-module.exports=Arena
+// module.exports=Arena
+export default Arena
